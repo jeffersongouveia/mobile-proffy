@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar'
 import { AppLoading } from 'expo'
 import * as Font from 'expo-font'
 
-import Landing from './src/pages/Landing'
+import AppStack from './src/routes/AppStack'
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false)
@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <>
-      <Landing />
+      <AppStack />
       <StatusBar style="light" />
     </>
   )
