@@ -9,10 +9,6 @@ import styles from './styles'
 function GiveClasses() {
   const { goBack } = useNavigation()
 
-  function handlerNavigateBack() {
-    goBack()
-  }
-
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -26,7 +22,7 @@ function GiveClasses() {
         </Text>
       </ImageBackground>
 
-      <RectButton style={styles.buttonOk} onPress={handlerNavigateBack}>
+      <RectButton style={styles.buttonOk} onPress={goBack}>
         <Text style={styles.buttonOkText}>
           Tudo bem
         </Text>

@@ -13,8 +13,12 @@ import styles from './styles'
 function Landing() {
   const { navigate } = useNavigation()
 
-  function handleNavigationToGiveClassesPage() {
+  function toGiveClasses() {
     navigate('GiveClasses')
+  }
+
+  function toStudy() {
+    navigate('Study')
   }
 
   return (
@@ -27,7 +31,10 @@ function Landing() {
       </Text>
 
       <View style={styles.buttonsContainer}>
-        <RectButton style={[styles.button, styles.buttonPrimary]}>
+        <RectButton
+          style={[styles.button, styles.buttonPrimary]}
+          onPress={toStudy}
+        >
           <Image source={studyIcon} />
           <Text style={styles.buttonText}>
             Estudar
@@ -36,7 +43,7 @@ function Landing() {
 
         <RectButton
           style={[styles.button, styles.buttonSecondary]}
-          onPress={handleNavigationToGiveClassesPage}
+          onPress={toGiveClasses}
         >
           <Image source={giveClassesIcon} />
           <Text style={styles.buttonText}>
