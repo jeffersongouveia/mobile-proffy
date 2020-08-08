@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { AppLoading } from 'expo'
+import * as Font from 'expo-font'
+
+import Landing from './src/pages/Landing'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontsLoaded, setFontsLoaded] = useState(false)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  useEffect(() => {
+    Font.loadAsync({
+      Archivo_400Regular: require('./assets/fonts/Archivo/Archivo-Regular.ttf'),
+      Archivo_700Bold: require('./assets/fonts/Archivo/Archivo-Bold.ttf'),
+      Poppins_400Regular: require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
+      Poppins_600SemiBold: require('./assets/fonts/Poppins/Poppins-SemiBold.ttf'),
+    })
+      .then(() => {
+        setFontsLoaded(true)
+      })
+      .catch(console.error)
+  }, [])
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
+
+  return (
+    <>
+      <Landing />
+      <StatusBar style="light" />
+    </>
+  )
+}
