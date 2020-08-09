@@ -9,9 +9,10 @@ import styles from './styles'
 
 interface PageHeaderProps {
   title: string
+  buttonRight?: React.ReactNode
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, buttonRight, children }) => {
   const { navigate } = useNavigation()
 
   function goLanding() {
@@ -28,9 +29,15 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
         <Image source={logoImg} resizeMode="contain" />
       </View>
 
-      <Text style={styles.title}>
-        {title}
-      </Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>
+          {title}
+        </Text>
+
+        {buttonRight}
+      </View>
+
+      {children}
     </View>
   )
 }
