@@ -18,8 +18,6 @@ function Favorites() {
           paddingBottom: 16,
         }}
       >
-        <TeacherItem />
-        <TeacherItem />
       </ScrollView>
     </View>
   )

@@ -7,31 +7,43 @@ import unfavoriteIcon from '../../../assets/images/icons/unfavorite.png'
 import whatsappIcon from '../../../assets/images/icons/whatsapp.png'
 import styles from './styles'
 
-function TeacherItem() {
+export interface Teacher {
+  id: number
+  name: string
+  subject: string
+  cost: number
+  avatar: string
+  whatsapp: string
+  bio: string
+}
+
+interface TeacherItemProps {
+  teacher: Teacher
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
         <Image
           style={styles.avatar}
-          source={{ uri: 'https://pbs.twimg.com/profile_images/1262289899786559489/wxFM6Q30_400x400.jpg' }}
+          source={{ uri: teacher.avatar }}
         />
 
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Emma Bostian</Text>
-          <Text style={styles.subject}>Front End</Text>
+          <Text style={styles.name}>{teacher.name}</Text>
+          <Text style={styles.subject}>{teacher.subject}</Text>
         </View>
       </View>
 
       <Text style={styles.bio}>
-        Software Engineer at @spotify in Stockholm 🇸🇪{'\n'}
-        Podcasting @ladybugpodcast 🎙💻{'\n'}
-        American Abroad 🇺🇸
+        {teacher.bio}
       </Text>
 
       <View style={styles.footer}>
         <Text style={styles.price}>
           Preço/hora {'   '}
-          <Text style={styles.priceValue}>R$ 80,00</Text>
+          <Text style={styles.priceValue}>R$ {teacher.cost}</Text>
         </Text>
 
         <View style={styles.containerButtons}>
